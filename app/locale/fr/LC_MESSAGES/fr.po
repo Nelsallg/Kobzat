@@ -1,0 +1,7 @@
+msgid "first name"
+msgstr "Prénom"
+
+
+msgid "last name"
+msgstr "Nom"
+

@@ -29,15 +29,14 @@
                 {% endif %}
 
                 <!-- Afficher les erreurs du formulaire UserCreationForm -->
-                {% if user_creation_form.errors %}
-                <ul class="errorlist">
-                    {% for field_errors in user_creation_form.errors.values %}
-                    {% for error in field_errors %}
-                        <li><p class="validation-summary-errors">{{ error }}</p></li>
-                    {% endfor %}
-                    {% endfor %}
-                </ul>
+                {% if user_creation_form_errors %}
+                    <ul class="errorlist">
+                        {% for error in user_creation_form_errors %}
+                            <li><p class="validation-summary-errors">{{ error }}</p></li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
+
             </form>
         </section>
     </div>

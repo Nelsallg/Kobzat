@@ -23,6 +23,10 @@ migrate:
 migrations:
 	$(PYTHON) $(MANAGE) makemigrations $(CLASSNAME)
 
+# make translation messages
+messages:
+	$(PYTHON) $(MANAGE) makemessages -l $(LANG)
+
 # Create a new Django app
 createapp:
 	$(PYTHON) $(MANAGE) startapp $(APPNAME)

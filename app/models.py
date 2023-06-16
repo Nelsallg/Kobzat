@@ -41,8 +41,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    last_login = models.DateField(_("Dernière connexion"), auto_now=False, auto_now_add=False)
-    date_joined = models.DateTimeField(_("Date d'inscription"), auto_now_add=True)
+    date_joined = models.DateTimeField(_("joined date"), auto_now_add=True)
 
     objects = CustomUserManager()
 
