@@ -19,9 +19,13 @@ runserver:
 migrate:
 	$(PYTHON) $(MANAGE) migrate
 
+#Migrate data in database
+migrations:
+	$(PYTHON) $(MANAGE) makemigrations $(CLASSNAME)
+
 # Create a new Django app
 createapp:
-	$(PYTHON) $(MANAGE) startapp <app_name>
+	$(PYTHON) $(MANAGE) startapp $(APPNAME)
 
 # Run tests
 test:

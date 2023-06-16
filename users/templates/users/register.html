@@ -1,0 +1,57 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="registrationForm">
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Inscrivez vous.</h4>
+                {{ registration_form.as_p }}
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="S'inscrire" class="btn btn-default" />
+                    </div>
+                </div>
+    
+                <!-- Afficher les erreurs du formulaire UserRegistrationForm -->
+                {% if registration_form.errors %}
+                <ul class="errorlist">
+                    {% for field_errors in registration_form.errors.values %}
+                    {% for error in field_errors %}
+                        <li><p class="validation-summary-errors">{{ error }}</p></li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <!-- Afficher les erreurs du formulaire UserCreationForm -->
+                {% if user_creation_form.errors %}
+                <ul class="errorlist">
+                    {% for field_errors in user_creation_form.errors.values %}
+                    {% for error in field_errors %}
+                        <li><p class="validation-summary-errors">{{ error }}</p></li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm"></section>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}
