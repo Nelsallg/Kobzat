@@ -4,7 +4,7 @@ from .forms import UserRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, login
-from app.forms import BootstrapAuthenticationForm
+from app.forms import UserAuthenticationForm
 # Create your views here.
 
 """Renders the registration form page."""
@@ -37,16 +37,16 @@ def registerView(request, title=None, year=None):
 
 
 def loginView(request,title=None,year=None):
-        form = BootstrapAuthenticationForm()
+        form = UserAuthenticationForm()
         username = ''
         
         if request.method == 'POST':
-            form = BootstrapAuthenticationForm(request.POST)
+            form = UserAuthenticationForm(request.POST)
             
-            if request.POST['username'] is None:
+            if request.POST['email'] is None:
                 username = 'phone_number'
             else:
-                username = 'username'
+                username = 'email'
             
             field = request.POST[username]
             password = request.POST['password']

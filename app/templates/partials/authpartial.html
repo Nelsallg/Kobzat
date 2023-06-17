@@ -2,16 +2,13 @@
 <form id="logoutForm" action="/logout/" method="post" class="navbar-right">
     {% csrf_token %}
     <ul class="nav navbar-nav navbar-right">
-        <li><span class="navbar-brand">Salut {{ user.username }}!</span></li>
+        <li><span class="navbar-brand">Salut {{user.first_name}} {{user.last_name}}!</span></li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
     </ul>
 </form>
-
 {% else %}
-
 <ul class="nav navbar-nav navbar-right">
     <li><a href="{% url 'login' %}">S'identifier</a></li>
     <li><a href="{% url 'register' %}">S'inscrire</a></li>
 </ul>
-
 {% endif %}
