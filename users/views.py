@@ -8,7 +8,7 @@ from app.forms import BootstrapAuthenticationForm
 # Create your views here.
 
 """Renders the registration form page."""
-def register(request, title=None, year=None):
+def registerView(request, title=None, year=None):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -36,7 +36,7 @@ def register(request, title=None, year=None):
     return render(request, 'users/register.html', context)
 
 
-def login_view(request,title=None,year=None):
+def loginView(request,title=None,year=None):
         form = BootstrapAuthenticationForm()
         username = ''
         

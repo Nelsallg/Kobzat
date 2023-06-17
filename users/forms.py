@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from app.models import User
 from django.core.exceptions import ValidationError
 
+
 WIDGET_ATTRS = {
     'first_name': {
         'placeholder': 'Votre prénom',
@@ -10,13 +11,13 @@ WIDGET_ATTRS = {
     'last_name': {
         'placeholder': 'Votre nom de famille',
     },
-    'username': {
+    'email': {
         'placeholder': 'Votre adresse e-mail',
     },
     'phone_number': {
         'placeholder': 'Votre numéro de téléphone',
     },
-    'nick_name': {
+    'username': {
         'placeholder': 'Votre surnom',
     },
     'address': {
@@ -39,7 +40,7 @@ class UserRegistrationForm(UserCreationForm):
     
     def clean(self):
         cleaned_data = super().clean()
-        email = cleaned_data.get('username')
+        email = cleaned_data.get('email')
         phone_number = cleaned_data.get('phone_number')
 
         if not email and not phone_number:
@@ -61,7 +62,7 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['last_name'].error_messages = {
             'blank': "Le nom de famille est obligatoire."
         }
-        self.fields['username'].error_messages = {
+        self.fields['email'].error_messages = {
             'unique': "Un utilisateur avec cette adresse e-mail existe déjà."
         }
         self.fields['phone_number'].error_messages = {
@@ -70,13 +71,12 @@ class UserRegistrationForm(UserCreationForm):
        
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'nick_name', 'address', 'sex', 'country','phone_number']
+        fields = ['first_name','last_name','email', 'address', 'sex', 'country','phone_number']
         
         labels = {
             'first_name': 'Prénom',
             'last_name': 'Nom de famille',
-            'username': 'Adresse e-mail',
-            'nick_name': 'Surnom',
+            'email': 'Adresse e-mail',
             'address': 'Adresse',
             'phone_number': 'Numéro de téléphone',
             'sex': 'Sexe',
@@ -89,5 +89,5 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
         return user
 
-class UserLoginForm:
+class UserLoginForm(forms.Form):
     pass
