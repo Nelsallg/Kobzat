@@ -12,7 +12,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('L\'adresse e-mail doit être renseignée.')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(username=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -29,27 +29,31 @@ class User(AbstractBaseUser):
         ('M', 'Masculin'),
         ('F', 'Féminin'),
     )
-
-    first_name = models.CharField(blank=False,max_length=30)
-    last_name = models.CharField(blank=False,max_length=30)
-    email = models.EmailField(unique=True)
-    nickname = models.CharField(blank=True,max_length=30)
-    address = models.CharField(blank=True,max_length=100)
-    phone_number = models.CharField(max_length=15)
-    sex = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
-    country = models.CharField(blank=True,max_length=50)
+    COUNTRY_CHOICES = (
+        ('GA', 'Gabon'),
+        ('TR', 'Türkiye'),
+        ('FR', 'France'),
+    )
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+    USERNAME_FIELD = 'username'
+    
+    first_name = models.CharField(_("first name"),blank=False,max_length=30)
+    last_name = models.CharField(_("last name"),blank=False,max_length=30)
+    username = models.EmailField(_("username"),unique=True,blank=True)
+    nick_name = models.CharField(_("nick name "),blank=True,max_length=30)
+    address = models.CharField(_("address"),blank=True,max_length=255)
+    phone_number = models.CharField(_("phone number"),unique=True,max_length=30,blank=True)
+    sex = models.CharField(_("sex"),max_length=1, choices=GENDER_CHOICES, default='M')
+    country = models.CharField(_("country"),max_length=50,choices=COUNTRY_CHOICES,default='GA')
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(_("joined date"), auto_now_add=True)
+    date_joined = models.DateTimeField(_("joined date "), auto_now_add=True)
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'nickname', 'address', 'phone_number', 'sex', 'country']
-
     def __str__(self):
-        return self.email
+        return self.username
 
     def has_perm(self, perm, obj=None):
         return self.is_superuser

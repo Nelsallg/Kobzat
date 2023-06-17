@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from users.forms import UserRegistrationForm
+from .forms import UserRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, login
+from app.forms import BootstrapAuthenticationForm
 # Create your views here.
 
 """Renders the registration form page."""
@@ -36,21 +37,31 @@ def register(request, title=None, year=None):
 
 
 def login_view(request,title=None,year=None):
-    if request.method == 'POST':
-        form = AuthenticationForm(request.POST)
-        username = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')  # Remplacez 'accueil' par le nom de votre vue d'accueil
+        form = BootstrapAuthenticationForm()
+        username = ''
+        
+        if request.method == 'POST':
+            form = BootstrapAuthenticationForm(request.POST)
+            
+            if request.POST['username'] is None:
+                username = 'phone_number'
+            else:
+                username = 'username'
+            
+            field = request.POST[username]
+            password = request.POST['password']
+            user = authenticate(request, username=field, password=password)
+            print(f"{username}:{field}, user:{user}")
+            
+            if user is not None:
+                login(request, user)
+                return redirect('home')  # Remplacez 'accueil' par le nom de votre vue d'accueil
+            else:
+                error_message = 'Identifiants invalides. Veuillez réessayer.'
+                context = {'form':form,'error':error_message,'title': title,'year':year}
+                return render(request, 'app/login.html', context)
         else:
-            error_message = 'Identifiants invalides. Veuillez réessayer.'
+            error_message = ''
             context = {'form':form,'error_message':error_message,'title': title,'year':year}
-            return render(request, 'app/login.html', context)
-    else:
-        form = AuthenticationForm()
-        error_message = ''
-        context = {'form':form,'error_message':error_message,'title': title,'year':year}
-    return render(request, 'app/login.html', context)
+        return render(request, 'app/login.html', context)
 

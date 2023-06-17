@@ -1,4 +1,4 @@
-<!-- Afficher les erreurs du formulaire UserRegistrationForm -->
+{% comment %} <!-- Afficher les erreurs du formulaire UserRegistrationForm -->
 {% if registration_form.errors %}
 <ul class="errorlist">
     {% for field_errors in registration_form.errors.values %}
@@ -16,4 +16,4 @@
             <li><p class="validation-summary-errors">{{ error }}</p></li>
         {% endfor %}
     </ul>
-{% endif %}
+{% endif %} {% endcomment %}

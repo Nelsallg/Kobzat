@@ -28,8 +28,8 @@
                         <input type="submit" value="Se connecter" class="btn btn-default" />
                     </div>
                 </div>
-                {% if form.errors %}
-                <p class="validation-summary-errors">Nom d'utilisateur/Email ou mot de passe incorrect.</p>
+                {% if error %}
+                <p class="validation-summary-errors">{{error}}</p>
                 {% endif %}
             </form>
         </section>

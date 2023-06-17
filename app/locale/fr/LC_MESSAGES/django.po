@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 00:29+0300\n"
+"POT-Creation-Date: 2023-06-17 09:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 #: .\app\forms.py:17
 msgid "Password"
-msgstr "Mot de passe"
+msgstr ""
+
+#: .\app\models.py:33
+msgid "first name"
+msgstr "Prénom"
+
+#: .\app\models.py:34
+msgid "last name"
+msgstr "Nom"
+
+#: .\app\models.py:35
+msgid "email"
+msgstr "Email"
+
+#: .\app\models.py:36
+msgid "nick name"
+msgstr "Surnom"
+
+#: .\app\models.py:37
+msgid "address"
+msgstr "Addresse"
+
+#: .\app\models.py:38
+msgid "phone number"
+msgstr "Numéro de téléphone"
+
+#: .\app\models.py:39
+msgid "sex"
+msgstr "Sexe"
+
+#: .\app\models.py:40
+msgid "country"
+msgstr "Pays"
 
 #: .\app\models.py:44
-msgid "last login"
-msgstr "Dernière connection"
-
-#: .\app\models.py:45
 msgid "joined date"
-msgstr "Date d'inscription&"
+msgstr "Date d'inscription"

@@ -1,7 +1,20 @@
 msgid "first name"
 msgstr "Prénom"
 
+msgid "nick name"
+msgstr "Surnom"
 
-msgid "last name"
-msgstr "Nom"
+msgid "address"
+msgstr "Addresse"
 
+msgid "phone number"
+msgstr "Numéro de téléphone"
+
+msgid "sex"
+msgstr "Sexe"
+
+msgid "country"
+msgstr "Pays"
+
+msgid "joined date"
+msgstr "Date d'inscription"

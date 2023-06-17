@@ -25,19 +25,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
     path('apropos/', views.about, name='about'),
-    path('connection/',
-         LoginView.as_view
-         (
-             template_name='app/login.html',
-             authentication_form=forms.BootstrapAuthenticationForm,
-             extra_context=
-             {
-                 'title': 'S\'identifier',
-                 'year' : datetime.now().year,
-             }
-         ),
-         name='login'),
+    path('connection/',lambda request: user_view.login_view(request, title="S'inscrire",year=datetime.now().year),name='login'),
     path('deconnection/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    path('inscription/', lambda request: user_view.register(request, title="S'inscrire",year=datetime.now().year), name='register')
+    path('inscription/', lambda request: user_view.register(request, title="S'inscrire",year=datetime.now().year), name='register'),
+    #path("comptes/", include("django.contrib.auth.urls")),
 ]

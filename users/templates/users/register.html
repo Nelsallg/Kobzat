@@ -16,27 +16,7 @@
                         <input type="submit" value="S'inscrire" class="btn btn-default" />
                     </div>
                 </div>
-    
-                <!-- Afficher les erreurs du formulaire UserRegistrationForm -->
-                {% if registration_form.errors %}
-                <ul class="errorlist">
-                    {% for field_errors in registration_form.errors.values %}
-                    {% for error in field_errors %}
-                        <li><p class="validation-summary-errors">{{ error }}</p></li>
-                    {% endfor %}
-                    {% endfor %}
-                </ul>
-                {% endif %}
-
-                <!-- Afficher les erreurs du formulaire UserCreationForm -->
-                {% if user_creation_form_errors %}
-                    <ul class="errorlist">
-                        {% for error in user_creation_form_errors %}
-                            <li><p class="validation-summary-errors">{{ error }}</p></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
+                {% include 'partials/_flash.html' %}
             </form>
         </section>
     </div>
