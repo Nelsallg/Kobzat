@@ -31,6 +31,9 @@ messages:
 createapp:
 	$(PYTHON) $(MANAGE) startapp $(APPNAME)
 
+superuser:
+	$(PYTHON) $(MANAGE) createsuperuser
+
 # Run tests
 test:
 	$(PYTHON) $(MANAGE) test

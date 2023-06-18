@@ -24,7 +24,7 @@ from users import views as user_view
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
-    path('apropos/', views.about, name='about'),
+    path('a propos/', views.about, name='about'),
     path('connection/',lambda request: user_view.loginView(request, title="S'inscrire",year=datetime.now().year),name='login'),
     path('deconnection/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls, name='admin'),

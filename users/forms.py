@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from app.models import User
+from app.models import CustomUser
 from django.core.exceptions import ValidationError
 
 
@@ -70,7 +70,7 @@ class UserRegistrationForm(UserCreationForm):
         }
        
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['first_name','last_name','email', 'address', 'sex', 'country','phone_number']
         
         labels = {
