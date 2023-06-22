@@ -1,14 +1,13 @@
 {% if user.is_authenticated %}
-<form id="logoutForm" action="/logout/" method="post" class="navbar-right">
+<form id="logoutForm" action="/deconnection/" method="post" class="navbar-right">
     {% csrf_token %}
     <ul class="nav navbar-nav navbar-right">
-        <li><span class="navbar-brand">Salut {{user.first_name}} {{user.last_name}}!</span></li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-outline-light me-2">Se déconnecter</a>
     </ul>
 </form>
 {% else %}
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="{% url 'login' %}">S'identifier</a></li>
-    <li><a href="{% url 'register' %}">S'inscrire</a></li>
-</ul>
+<div class="text-end">
+    <a href="{% url 'login' %}" class="btn btn-outline-light me-2">S'identifier</a>
+    <a href="{% url 'register' %}" class="btn btn-warning">S'inscrire</a>
+</div>
 {% endif %}

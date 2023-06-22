@@ -1,0 +1,48 @@
+<footer class="container py-5">
+    {% load static %}
+    <div class="row">
+      <div class="col-12 col-md">
+        <object data="{% static 'app/icons/logo.svg' %}" type="image/svg+xml"></object>
+        <small class="d-block mb-3 text-body-secondary">&copy; 2017–{{ year }} - LivreLeur - Touts droits réservés.</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="#">Affaire</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Éducation</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Gouvernement</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Jeu</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a href="{% url 'about' %}" class="link-secondary text-decoration-none">Equipe</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Localisations</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Confidentialité</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Conditions</a></li>
+          <li><a href="{% url 'contact' %}" class="link-secondary text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>

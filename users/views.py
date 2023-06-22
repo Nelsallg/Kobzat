@@ -39,29 +39,30 @@ def registerView(request, title=None, year=None):
 
 
 def loginView(request,title=None,year=None):
-        form = UserAuthenticationForm()
-        username = ''
+    messages.get_messages(request)
+    form = UserAuthenticationForm()
+    username = ''
         
-        if request.method == 'POST':
-            form = UserAuthenticationForm(request.POST)
+    if request.method == 'POST':
+        form = UserAuthenticationForm(request.POST)
             
-            username = request.POST['username']
-            password = request.POST['password']
-            user = authenticate(request, username=username, password=password)
-            print(f"username:{username}, user:{user}")
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print(f"username:{username}, user:{user}")
             
-            if user is not None:
-                login(request, user)
-                return redirect('home')  # Remplacez 'accueil' par le nom de votre vue d'accueil
-            else:
-                error_message = 'Identifiants invalides. Veuillez réessayer.'
-                context = {'form':form,'error':error_message,'title': title,'year':year}
-                return render(request, 'app/login.html', context)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Remplacez 'accueil' par le nom de votre vue d'accueil
         else:
-            error_message = ''
-            context = {'form':form,'error_message':error_message,'title': title,'year':year}
-        return render(request, 'app/login.html', context)
-
+            error_message = 'Identifiants invalides. Veuillez réessayer.'
+            context = {'form':form,'error':error_message,'title': title,'year':year}
+            return render(request, 'app/login.html', context)
+    else:
+        error_message = ''
+        context = {'form':form,'error_message':error_message,'title': title,'year':year}
+    return render(request, 'app/login.html', context)
+    
 # @login_required
 # def profileView(request):
 #     if request.method == 'POST':

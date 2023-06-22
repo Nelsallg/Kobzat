@@ -5,43 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - LivreLeur</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand">LivreLeur</a>
+          <a class="navbar-brand d-md-none" href="#">
+            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+            Aperture
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="#offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="#offcanvasLabel">Aperture</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Acceuil</a></li>
-                    <li><a href="{% url 'about' %}">A propos</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                </ul>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav flex-grow-1 justify-content-between">
+                <li class="nav-item"><a class="nav-link" href="#">
+                  <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+                </a></li>
+                <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Acceuil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Intélligences Artificielles</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Jeux Video</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Abonnements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">
+                  <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg>
+                </a></li>
                 {% include 'partials/authpartial.html' %}
+              </ul>
             </div>
+          </div>
         </div>
-    </div>
-
+      </nav> 
+           
+    {% comment %} <header class="p-3 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Acceuil</a></li>
+              <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">A propos</a></li>
+              <li><a href="{% url 'contact' %}" class="nav-link px-2 text-white">Contact</a></li>
+            </ul>
+            
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+    
+            {% include 'partials/authpartial.html' %}
+          </div>
+        </div>
+      </header> {% endcomment %}
+    {% include 'partials/_messages.html' %}
     <div class="container body-content">
 {% block content %}{% endblock %}
         <hr/>
-        <footer>
-            <p>&copy; {{ year }} - LivreLeur - Touts droits réservés.</p>
-        </footer>
+        {% include 'partials/_footer.html' %}
     </div>
 
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
 

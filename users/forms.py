@@ -18,7 +18,7 @@ WIDGET_ATTRS = {
         'placeholder': 'Votre numéro de téléphone',
     },
     'username': {
-        'placeholder': 'Votre surnom',
+        'placeholder': 'Votre nom d\'utilisateur',
     },
     'address': {
         'placeholder': 'Votre addresse',
@@ -44,8 +44,11 @@ class UserRegistrationForm(UserCreationForm):
         phone_number = cleaned_data.get('phone_number')
 
         if not email and not phone_number:
-            raise ValidationError("Veuillez fournir une adresse e-mail ou un numéro de téléphone.")
-
+            raise forms.ValidationError(
+                'Veuillez fournir une adresse e-mail ou un numéro de téléphone.',
+                code='missing_fields',
+                params={'type': 'warning'}
+            )
         return cleaned_data
     
     def setHtmlAttributes(self):
@@ -71,12 +74,13 @@ class UserRegistrationForm(UserCreationForm):
        
     class Meta:
         model = CustomUser
-        fields = ['first_name','last_name','email', 'address', 'sex', 'country','phone_number']
+        fields = ['first_name','last_name','email','username', 'address', 'sex', 'country','phone_number']
         
         labels = {
             'first_name': 'Prénom',
             'last_name': 'Nom de famille',
             'email': 'Adresse e-mail',
+            'username':'Nom d\'utilisateur',
             'address': 'Adresse',
             'phone_number': 'Numéro de téléphone',
             'sex': 'Sexe',

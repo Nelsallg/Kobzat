@@ -1,0 +1,96 @@
+{% if messages %}
+    {% if message.tags == 'success' %}
+        {% for message in messages %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>
+                {{ message }}
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+{% if messages %}
+    {% if message.tags == 'warning' %}
+        {% for message in messages %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            <div>
+                {{ message }}
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+{% if messages %}
+    {% if message.tags == 'info' %}
+        {% for message in messages %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill"></i>
+            <div>
+                {{ message }}
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+{% if messages %}
+    {% if message.tags == 'danger' %}
+        {% for message in messages %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>
+                {{ message }}
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+
+
+{% if registration_form.errors %}
+  {% for field_name, error_messages in form.errors.items %}
+    {% for error in error_messages %}
+
+        {% if error.params.type == 'warning' %}
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <i class="bi bi-exclamation-octagon-fill"></i>
+                <div>
+                    {{ error }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if error.params.type == 'alert' %}
+            <div class="alert alert-alert d-flex align-items-center" role="alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <div>
+                    {{ error }}
+                </div>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% if registration_form.errors %}
+    {% for field_errors in registration_form.errors.values %}
+    {% for error in field_errors %}
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <div class='d-flex align-items-center'>
+            <div style="margin-right:10px;" class='col'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16" >
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                </svg>
+            </div>
+            <div class="col">{{ error }}</div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+{% endif %}
