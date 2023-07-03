@@ -23,6 +23,10 @@ from users import views as user_view
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('intelligence artificielle/', views.ai, name='ai'),
+    path('jeux video/', views.video_game, name='video_game'),
+    path('abonnements/', views.subscriptions, name='subscriptions'),
+    path('support/', views.support, name='support'),
     path('contact/', views.contact, name='contact'),
     path('a propos/', views.about, name='about'),
     path('connection/',lambda request: user_view.loginView(request, title="S'inscrire",year=datetime.now().year),name='login'),

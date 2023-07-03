@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from app.models import CustomUser
 from django.core.exceptions import ValidationError
 
-
 WIDGET_ATTRS = {
     'first_name': {
         'placeholder': 'Votre prénom',
@@ -23,8 +22,9 @@ WIDGET_ATTRS = {
     'address': {
         'placeholder': 'Votre addresse',
     }
-    
+
 }
+
 
 class UserRegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -33,11 +33,10 @@ class UserRegistrationForm(UserCreationForm):
         self.setErrorMessages()
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
-        
+
     email = forms.EmailField(required=False)
     phone_number = forms.CharField(required=False)
-    
-    
+
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get('email')
@@ -50,14 +49,14 @@ class UserRegistrationForm(UserCreationForm):
                 params={'type': 'warning'}
             )
         return cleaned_data
-    
+
     def setHtmlAttributes(self):
         for field_name in self.fields:
             field = self.fields[field_name]
             widget = field.widget
             attrs = WIDGET_ATTRS.get(field_name, "")
             widget.attrs.update(attrs)
-            
+
     def setErrorMessages(self):
         self.fields['first_name'].error_messages = {
             'blank': "Le prénom est obligatoire."
@@ -71,16 +70,16 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['phone_number'].error_messages = {
             'unique': "Un utilisateur avec ce numéro de téléphone existe déjà."
         }
-       
+
     class Meta:
         model = CustomUser
-        fields = ['first_name','last_name','email','username', 'address', 'sex', 'country','phone_number']
-        
+        fields = ['first_name', 'last_name', 'email', 'username', 'address', 'sex', 'country', 'phone_number']
+
         labels = {
             'first_name': 'Prénom',
             'last_name': 'Nom de famille',
             'email': 'Adresse e-mail',
-            'username':'Nom d\'utilisateur',
+            'username': 'Nom d\'utilisateur',
             'address': 'Adresse',
             'phone_number': 'Numéro de téléphone',
             'sex': 'Sexe',
@@ -88,10 +87,11 @@ class UserRegistrationForm(UserCreationForm):
         }
 
     def save(self, commit=True):
-        user = super(UserRegistrationForm,self).save(commit=False)
+        user = super(UserRegistrationForm, self).save(commit=False)
         if commit:
             user.save()
         return user
+
 
 class UserLoginForm(forms.Form):
     pass

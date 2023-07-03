@@ -8,24 +8,26 @@
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
-                <h4>Utilisez votre compte LivreLeur pour vous connecter.</h4>
+                <h4>Utilisez votre compte Kobzat pour vous connecter.</h4>
                 <hr />
                 <div class="form-group">
-                    <label for="id_username" class="col-md-2 control-label">Nom d'utilisateur/Email</label>
+                    <label for="id_username" class="col-md-4 control-label">Nom d'utilisateur/Email</label>
                     <div class="col-md-10">
                         {{ form.username }}
                     </div>
                 </div>
+                 <br>
                 <div class="form-group">
                     <label for="id_password" class="col-md-2 control-label">Mot de passe</label>
                     <div class="col-md-10">
                         {{ form.password }}
                     </div>
                 </div>
+                <br>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Se connecter" class="btn btn-default" />
+                        <input type="submit" value="Se connecter" class="btn btn-warning" />
                     </div>
                 </div>
                 {% if error %}
