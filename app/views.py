@@ -4,7 +4,7 @@ Definition of views.
 
 from datetime import datetime
 from django.shortcuts import render
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from .forms import ChatForm
 from Kobzat_ia.main import predict_class, get_response
 
@@ -37,7 +37,8 @@ def ai(request):
                 'form': form,
                 'response': response
             }
-            return render(request, 'app/ai.html', context)
+            # return render(request, 'app/ai.html', context)
+            return HttpResponse(content=f"</p>Chatbox: {response}<br></p>")
 
     context = {'form': form,'title': 'Intéliggence Artificielle','year': datetime.now().year}
     return render(request,'app/ai.html',context)

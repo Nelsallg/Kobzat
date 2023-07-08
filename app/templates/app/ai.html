@@ -2,13 +2,15 @@
 
 {% block content %}
     <h1>Chatbot</h1>
-    <form method="post">
+    <form method="post"
+    hx-target="#chatbot-field"
+    hx-swap='beforeend'
+    hx-post="{% url 'ai' %}"
+    >
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-warning">Envoyer</button>
     </form>
-    {% if response %}
-        <p>Chatbox: {{ response }}</p>
-    {% endif %}
+    <div id='chatbot-field'>{{ response }}</div>
 
 {% endblock %}
