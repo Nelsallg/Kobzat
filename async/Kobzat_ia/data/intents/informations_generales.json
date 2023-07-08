@@ -1,0 +1,10 @@
+{
+    "intents": [
+      {
+        "tag": "informations_generales",
+        "patterns": ["Quel est ton nom ?", "Où es-tu situé ?", "Qu'est-ce que tu fais ?"],
+        "responses": ["Je suis une chatbox développée avec TensorFlow.", "Je suis une intelligence artificielle. Je n'ai pas de localisation physique.", "Je suis ici pour répondre à vos questions et vous assister."]
+      }
+    ]
+  }
+  

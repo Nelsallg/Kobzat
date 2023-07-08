@@ -1,0 +1,73 @@
+{
+    "intents": [
+      {
+        "tag": "salutation",
+        "patterns": ["Bonjour", "Salut", "Coucou","Hey"],
+        "responses": [
+          "Bonjour ! Comment puis-je vous aider ?", 
+          "Salut ! En quoi puis-je vous assister ?", 
+          "Coucou ! Que puis-je faire pour vous ?",
+          "Hey !"
+        ]
+      },
+      {
+        "tag": "introduction",
+        "patterns": ["Comment vas-tu?", "Ca va?", "Comment allez-vous?"],
+        "responses": ["Je me porte très bien merci, et vous?", "Très bien merci, et vous?", "Bien merci, et vous?"]
+      },
+      {
+        "tag": "aurevoir",
+        "patterns": ["Au revoir", "A plus tard", "À bientôt"],
+        "responses": [
+          "Au revoir ! N'hésitez pas à revenir si vous avez d'autres questions.",
+          "À plus tard ! Prenez soin de vous.",
+          "À bientôt ! Passez une excellente journée !"
+        ]
+
+      },
+      {
+        "tag": "remerciement",
+        "patterns": ["Merci", "Je vous suis reconnaissant", "C'est gentil"],
+        "responses": [
+          "De rien ! Je suis là pour vous aider.",
+          "Il n'y a pas de quoi. Si vous avez besoin d'aide supplémentaire, faites-le moi savoir.",
+          "Je vous en prie ! Si vous avez d'autres questions, je suis là."
+        ]
+      },
+      {
+        "tag": "informations_sur_l_ia",
+        "patterns": ["Comment t'appelles-tu?","Quel est ton nom ?","Qui es tu?"],
+        "responses": [
+          "Je suis une intélligence artificielle créée par las compagnie Evangzat Unlimited le 30 mai 2023",
+          "Je suis une chatbox développée avec Evangzat."
+        ]
+      },
+      {
+        "tag": "demande_age",
+        "patterns": ["De combien d'années es-tu âgée ?","Quel age as-tu?"],
+        "responses": ["En tent qu'intélligence artificielle, la notion d'âge ne m'est pas attribué."]
+      },
+      {
+        "tag": "demande_sexe",
+        "patterns": ["Tu es homme ou femme ?","T'es de quel sexe"],
+        "responses": ["Je suis une intélligence artificielle inventée par la compagnie Evangzat Unlimited et en tent que telle, je ne possede pas des caractéristiques humaines telles que le sexe."]
+      },
+      {
+        "tag": "demande_langue",
+        "patterns": ["Quelle langues parles-tu ?","Tu parles quelle langue?"],
+        "responses": ["Je parle Francais , mais j'ai la capacité de parler plusieurs autres langue telles que Turque,Fang Gabonais,Russe,Anglais,Wollof..."]
+      },
+      {
+        "tag": "role_de_l_ia",
+        "patterns": ["Qu'est-ce que tu fais ?","Que fais-tu ?"],
+        "responses": ["Je suis ici pour répondre à vos questions et vous assister."]
+      }
+      ,
+      {
+        "tag": "informations_de_geolocatisation_de_l_ia",
+        "patterns": ["Où es-tu situé ?"],
+        "responses": ["Je suis une intelligence artificielle. Je n'ai pas de localisation physique."]
+      }
+    ]
+  }
+  

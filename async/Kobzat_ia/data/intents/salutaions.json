@@ -1,0 +1,10 @@
+{
+    "intents": [
+      {
+        "tag": "salutation",
+        "patterns": ["Bonjour", "Salut", "Coucou"],
+        "responses": ["Bonjour ! Comment puis-je vous aider ?", "Salut ! En quoi puis-je vous assister ?", "Coucou ! Que puis-je faire pour vous ?"]
+      }
+    ]
+  }
+  

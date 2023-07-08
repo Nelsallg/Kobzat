@@ -1,0 +1,10 @@
+{
+    "intents": [
+      {
+        "tag": "remerciement",
+        "patterns": ["Merci", "Je vous suis reconnaissant", "C'est gentil"],
+        "responses": ["De rien ! Je suis là pour vous aider.", "Il n'y a pas de quoi. Si vous avez besoin d'aide supplémentaire, faites-le moi savoir.", "Je vous en prie ! Si vous avez d'autres questions, je suis là."]
+      }
+    ]
+  }
+  
