@@ -5,6 +5,9 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from .forms import ChatForm
+from Kobzat_ia.main import predict_class, get_response
+
 
 
 def home(request):
@@ -22,15 +25,22 @@ def home(request):
 
 def ai(request):
     """Renders the ai page."""
+    form = ChatForm()
     assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/ai.html',
-        {
-            'title': 'Intéliggence Artificielle',
-            'year': datetime.now().year,
-        }
-    )
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
+        if form.is_valid():
+            input_value = form.cleaned_data['question']
+            intent = predict_class(input_value)
+            response = get_response(intent)
+            context = {
+                'form': form,
+                'response': response
+            }
+            return render(request, 'app/ai.html', context)
+
+    context = {'form': form,'title': 'Intéliggence Artificielle','year': datetime.now().year}
+    return render(request,'app/ai.html',context)
 
 
 def video_game(request):

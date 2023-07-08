@@ -21,3 +21,14 @@ class UserAuthenticationForm(AuthenticationForm):
             'placeholder':'Mot de passe'
         }
     ))
+    
+class ChatForm(forms.Form):
+    question = forms.CharField(label='Votre question', max_length=200,widget=forms.TextInput(
+        {
+            'class':"form-control",
+            "autocomplete": "off",
+            "autofocus": True,
+            "required":True,
+            "pattern": "^.{3,}$|^$",
+        }
+    ))
