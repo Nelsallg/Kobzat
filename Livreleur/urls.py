@@ -20,6 +20,7 @@ from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
 from users import views as user_view
+from users.views import profileView
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -33,5 +34,5 @@ urlpatterns = [
     path('deconnection/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls, name='admin'),
     path('inscription/', lambda request: user_view.registerView(request, title="S'inscrire",year=datetime.now().year), name='register'),
-    #path("comptes/", include("django.contrib.auth.urls")),
+    path("profile/", profileView, name="profile"),
 ]

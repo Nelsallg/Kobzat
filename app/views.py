@@ -33,12 +33,7 @@ def ai(request):
             input_value = form.cleaned_data['question']
             intent = predict_class(input_value)
             response = get_response(intent)
-            context = {
-                'form': form,
-                'response': response
-            }
-            # return render(request, 'app/ai.html', context)
-            return HttpResponse(content=f"</p>Chatbox: {response}<br></p>")
+            return HttpResponse(content=f"</p><br>Chatbot: {response}</p>")
 
     context = {'form': form,'title': 'Intéliggence Artificielle','year': datetime.now().year}
     return render(request,'app/ai.html',context)

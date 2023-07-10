@@ -11,7 +11,7 @@ class LoadModel:
     def __init__(self):
         self.training_labels = []
         self.labels = []
-         # Auto execution des fonctions de chargement du model
+        # Auto execution des fonctions de chargement du model
         self.loadDataFromCache()
         self.loadDataFromCacheOrFile()
         
@@ -104,24 +104,24 @@ class LoadModel:
             # Récupérer le modèle depuis le cache
             self.model = cache.get(model_key)
     
-    def getTokenizer(self):
+    def _get_tokenizer(self):
         return self.tokenizer
     
-    def getMaxSequenceLen(self)->int:
+    def _get_max_sequence_len(self)->int:
         return self.max_sequence_len
     
-    def getModel(self):
+    def _get_model(self):
         return self.model
     
-    def getLabels(self)->list:
+    def _get_labels(self)->list:
         return self.labels
     
-    def getData(self)->any:
+    def _get_data(self)->any:
         return self.data
     
-    def asDict(self)->dict[str,any]:
+    def _as_dict(self)->dict[str,any]:
         return {
-            "tokenizer":self.Tokenizer,
+            "tokenizer":self.tokenizer,
             "max_sequence_len":self.max_sequence_len,
             "model":self.model,
             "labels":self.labels,

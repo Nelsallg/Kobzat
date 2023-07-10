@@ -1,25 +1,56 @@
+import os
+import json
 import tensorflow as tf
 import numpy as np
+from django.conf import settings
+import pprint
 from .model.load import LoadModel
 
-# Définir une variable pour stocker le modèle chargé
+MODEL_DATA_DIR = os.path.join(settings.BASE_DIR, 'Kobzat_ia/model_data')
 loaded_model = None
-load_model = None
 
 # Fonction pour charger le modèle si ce n'est pas déjà fait
 def load_chatbot_model():
     global loaded_model
     if loaded_model is None:
-        load_model = LoadModel()
-    return load_model
+        loaded_model = LoadModel()
+    return loaded_model
 
 # On charge le modèle et récupère les données nécessaires
-loaded_model = load_chatbot_model()
-model = loaded_model.getModel()
-tokenizer = loaded_model.getTokenizer()
-max_sequence_len = loaded_model.getMaxSequenceLen()
-labels = loaded_model.getLabels()
-data = loaded_model.getData()
+model_data_path = os.path.join(MODEL_DATA_DIR, 'model_data.json')
+if not os.path.exists(model_data_path):
+    # Charger les données du modèle à partir du fichier
+    with open(model_data_path, 'r') as file:
+        model_data = json.load(file)
+
+    model = tf.keras.models.model_from_json(model_data['model_json'])
+    tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(model_data['tokenizer_json'])
+    max_sequence_len = model_data['max_sequence_len']
+    labels = model_data['labels']
+    data = model_data['data']
+else:
+    # Les données du modèle n'existent pas, les créer et les sauvegarder
+    loaded_model = load_chatbot_model()
+    model = loaded_model._get_model()
+    tokenizer = loaded_model._get_tokenizer()
+    max_sequence_len = loaded_model._get_max_sequence_len()
+    labels = loaded_model._get_labels()
+    data = loaded_model._get_data()
+
+    # Sauvegarder les données du modèle dans un fichier
+    model_data = {
+        'model_json': model.to_json(),
+        'tokenizer_json': tokenizer.to_json(),
+        'max_sequence_len': max_sequence_len,
+        'labels': labels,
+        'data': data
+    }
+
+    os.makedirs(MODEL_DATA_DIR, exist_ok=True)
+    with open(model_data_path, 'w') as file:
+        json.dump(model_data, file)
+
+
 
 # Fonction pour prédire la classe d'une phrase donnée
 def predict_class(sentence):

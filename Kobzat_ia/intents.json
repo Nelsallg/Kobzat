@@ -2,7 +2,7 @@
     "intents": [
       {
         "tag": "salutation",
-        "patterns": ["Bonjour", "Salut", "Coucou","Hey"],
+        "patterns": ["Bonjour","Salut","Coucou","Hey"],
         "responses": [
           "Bonjour ! Comment puis-je vous aider ?", 
           "Salut ! En quoi puis-je vous assister ?", 
@@ -12,16 +12,21 @@
       },
       {
         "tag": "introduction",
-        "patterns": ["Comment vas-tu?", "Ca va?", "Comment allez-vous?"],
-        "responses": ["Je me porte très bien merci, et vous?", "Très bien merci, et vous?", "Bien merci, et vous?"]
+        "patterns": ["Comment vas-tu?", "Ca va?", "Comment allez-vous?","Comment tu vas?"],
+        "responses": [
+          "Je me porte très bien merci, et vous?", 
+          "Très bien merci, et vous?", 
+          "Bien merci, et vous?"
+        ]
       },
       {
         "tag": "aurevoir",
-        "patterns": ["Au revoir", "A plus tard", "À bientôt"],
+        "patterns": ["Au revoir", "A plus tard", "À bientôt","Bye !"],
         "responses": [
           "Au revoir ! N'hésitez pas à revenir si vous avez d'autres questions.",
           "À plus tard ! Prenez soin de vous.",
-          "À bientôt ! Passez une excellente journée !"
+          "À bientôt ! Passez une excellente journée !",
+          "Bye !"
         ]
 
       },
@@ -44,12 +49,12 @@
       },
       {
         "tag": "demande_age",
-        "patterns": ["De combien d'années es-tu âgée ?","Quel age as-tu?"],
+        "patterns": ["De combien d'années es-tu âgée ?","Quel age as-tu?","Tu as quel âge?"],
         "responses": ["En tent qu'intélligence artificielle, la notion d'âge ne m'est pas attribué."]
       },
       {
         "tag": "demande_sexe",
-        "patterns": ["Tu es homme ou femme ?","T'es de quel sexe"],
+        "patterns": ["Tu es homme ou femme ?","Tu es de quel sexe"],
         "responses": ["Je suis une intélligence artificielle inventée par la compagnie Evangzat Unlimited et en tent que telle, je ne possede pas des caractéristiques humaines telles que le sexe."]
       },
       {
@@ -59,13 +64,13 @@
       },
       {
         "tag": "role_de_l_ia",
-        "patterns": ["Qu'est-ce que tu fais ?","Que fais-tu ?"],
+        "patterns": ["Qu'est-ce que tu fais ?","Que fais-tu ?","Tu fais-quoi?"],
         "responses": ["Je suis ici pour répondre à vos questions et vous assister."]
       }
       ,
       {
         "tag": "informations_de_geolocatisation_de_l_ia",
-        "patterns": ["Où es-tu situé ?"],
+        "patterns": ["Où es-tu situé ?","Où vis-tu?","Où habites-tu?"],
         "responses": ["Je suis une intelligence artificielle. Je n'ai pas de localisation physique."]
       }
     ]
